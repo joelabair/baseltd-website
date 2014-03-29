@@ -1,0 +1,17 @@
+{
+  "name": "OpenShift-Template-App",
+  "version": "0.0.1",
+  "description": "OpenShift Application Template",
+  "author": {
+		"name": "Joel Bair",
+		"email": "joel.a.bair@gmail.com"
+  },
+  "dependencies": {
+		"express": "3.x",
+		"consolidate": "*",
+		"mongodb" : "> 1.1.10",
+		"mandrill-api": "*"
+  },
+  "private": true,
+  "main": "server.js"
+}

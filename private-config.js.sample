@@ -1,0 +1,38 @@
+/*
+ *  Application Configuration Settings
+ *
+ */
+
+var path = require('path');
+
+global['__APP_ROOT_PATH'] = __dirname;
+global['__APP_MODELS_PATH'] = path.join(__dirname, 'models');
+global['__APP_PUBLIC_PATH'] = path.join(__dirname, 'public');
+global['__APP_ROUTES_PATH'] = path.join(__dirname, 'routes');
+
+
+var config = {
+    server: {
+		hostname:	'localhost',
+		address:		process.env.OPENSHIFT_INTERNAL_IP || '127.0.0.1',
+		port:			parseInt(process.env.OPENSHIFT_INTERNAL_PORT) || 3001
+	},
+	mongodb: {
+		host:			process.env.OPENSHIFT_MONGODB_DB_HOST || '127.0.0.1',
+		port:			parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT) || 27017,
+		dbname:		process.env.OPENSHIFT_APP_NAME || 'myDb1',
+		username:   process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'example.username',
+		password:	process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'example.password'
+	},
+	messaging: {
+		api_key:		'xxx',
+		subject:		'an E-Mail',
+		to_addr:		'joe-user@example.com',
+		to_name:		'Joe User.',
+		from_addr:	'messaging@example.com',
+		from_sfx:		' via example.com',
+		acnt_id: 		'123456'
+	}
+};
+
+module.exports = config;
