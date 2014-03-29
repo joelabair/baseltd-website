@@ -14,15 +14,15 @@ global['__APP_ROUTES_PATH'] = path.join(__dirname, 'routes');
 var config = {
     server: {
 		hostname:	'localhost',
-		address:		process.env.OPENSHIFT_INTERNAL_IP || '127.0.0.1',
-		port:			parseInt(process.env.OPENSHIFT_INTERNAL_PORT) || 3001
+		address:		(process.env.OPENSHIFT_NODEJS_IP) ? process.env.OPENSHIFT_NODEJS_IP : '127.0.0.1',
+		port:			(parseInt(process.env.OPENSHIFT_NODEJS_PORT)) ? parseInt(process.env.OPENSHIFT_NODEJS_PORT) : 3001,
 	},
 	mongodb: {
-		host:			process.env.OPENSHIFT_MONGODB_DB_HOST || '127.0.0.1',
-		port:			parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT) || 27017,
-		dbname:		process.env.OPENSHIFT_APP_NAME || 'myDb1',
-		username:   process.env.OPENSHIFT_MONGODB_DB_USERNAME || 'example.username',
-		password:	process.env.OPENSHIFT_MONGODB_DB_PASSWORD || 'example.password'
+		host:			(process.env.OPENSHIFT_MONGODB_DB_HOST) ? process.env.OPENSHIFT_MONGODB_DB_HOST : '127.0.0.1',
+		port:			(parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT)) ? parseInt(process.env.OPENSHIFT_MONGODB_DB_PORT) : 27017,
+		dbname:		(process.env.OPENSHIFT_APP_NAME) ? process.env.OPENSHIFT_APP_NAME : 'myDb1',
+		username:   (process.env.OPENSHIFT_MONGODB_DB_USERNAME) ? process.env.OPENSHIFT_MONGODB_DB_USERNAME : 'example.username',
+		password:	(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) ? process.env.OPENSHIFT_MONGODB_DB_PASSWORD : 'example.password'
 	},
 	messaging: {
 		api_key:		'xxx',
