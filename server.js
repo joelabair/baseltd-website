@@ -15,7 +15,8 @@ var fs = require('fs'),
  * Get config
  *
  */
-var config = require('./private-config.js');
+var cfgRoot = (process.env.OPENSHIFT_DATA_DIR) ? process.env.OPENSHIFT_DATA_DIR : '';
+var config = require(cfgRoot+'./private-config.js');
 
 
 /**
