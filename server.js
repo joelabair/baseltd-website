@@ -21,8 +21,9 @@ var config = require(cfgRoot+'./private-config.js');
 
 global['__APP_ROOT_PATH'] = __dirname;
 global['__APP_MODELS_PATH'] = path.join(__dirname, 'models');
-global['__APP_PUBLIC_PATH'] = path.join(__dirname, 'public');
+global['__APP_VIEWS_PATH'] = path.join(__dirname,'views');
 global['__APP_ROUTES_PATH'] = path.join(__dirname, 'routes');
+global['__APP_PUBLIC_PATH'] = path.join(__dirname, 'public');
 
 
 /**
