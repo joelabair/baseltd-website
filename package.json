@@ -7,10 +7,11 @@
 		"email": "joel.a.bair@gmail.com"
   },
   "dependencies": {
-		"express": "3.x",
-		"consolidate": "*",
+		"express": "3.5.x",
 		"mongodb" : "> 1.1.10",
-		"mandrill-api": "*"
+		"mandrill-api": "*",
+		"express3-handlebars": "*",
+		"express-validator": "~2.1.1"
   },
   "private": true,
   "main": "server.js"

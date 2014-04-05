@@ -6,9 +6,9 @@
 var fs = require('fs'),
 	path = require('path'),
     express = require('express'),
-	cons = require('consolidate'),
     Db = require('mongodb').Db,
-    Server = require('mongodb').Server;
+    Server = require('mongodb').Server,
+	handlebars = require('express3-handlebars');
 
 
 /**
@@ -31,6 +31,7 @@ global['__APP_ROUTES_PATH'] = path.join(__dirname, 'routes');
  */
 var app = express();
 app.enable('trust proxy');
+app.disable('x-powered-by');
 
 for(var name in config.server) {
     if(config.server.hasOwnProperty(name)) {
@@ -59,23 +60,45 @@ db.open(function(err, db) {
     });
 });
 
-app.engine('phtml', cons.handlebars);
+var expressSecret = '02022010amb';
 
+app.set('views', __APP_VIEWS_PATH);
+app.engine('phtml', handlebars({defaultLayout: 'layout', extname: '.phtml'}));
 app.set('view engine', 'phtml');
-app.set('views', __dirname + '/views');
 
-app.use(express.logger());
+app.use(express.logger(config.logFormat));
 app.use(express.favicon(__APP_PUBLIC_PATH + '/favicon.ico'));
 app.use(express.compress());
+
 app.use(express.bodyParser({limit: 4096}));
+app.use(express.cookieParser(expressSecret));
+app.use(express.cookieSession({
+	key: '_BSID',
+	secret: expressSecret,
+	cookie: {
+		httpOnly: true,
+		maxAge: (((60 * 60) * 24) * 7) * 1000
+		// maxAge 7 days
+	}
+}));
+
+app.use(express.csrf());
+app.use(function(req, res, next) {
+	// NOTE: ensure the _csrf token is available in any forms, add the following to the form
+	// <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+	res.locals.csrfToken = req.csrfToken();
+	next();
+});
+
 
 app.use(express.static(__APP_PUBLIC_PATH));
 app.use(app.router);
 
+express.errorHandler.title = 'Third Social Free';
 app.use(express.errorHandler());
 
 app.get('/ping', function(req, res){
-	res.send('1');
+	res.render('ping');
 });
 
 /**
