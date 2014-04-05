@@ -95,7 +95,7 @@ app.use(function(req, res, next) {
 app.use(express.static(__APP_PUBLIC_PATH));
 app.use(app.router);
 
-express.errorHandler.title = 'Third Social Free';
+express.errorHandler.title = 'BASE Ltd';
 app.use(express.errorHandler());
 
 app.get('/ping', function(req, res){
