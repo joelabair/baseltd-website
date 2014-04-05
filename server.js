@@ -5,9 +5,9 @@
  */
 var fs = require('fs'),
 	path = require('path'),
-    express = require('express'),
-    Db = require('mongodb').Db,
-    Server = require('mongodb').Server,
+	express = require('express'),
+	Db = require('mongodb').Db,
+	Server = require('mongodb').Server,
 	handlebars = require('express3-handlebars');
 
 
