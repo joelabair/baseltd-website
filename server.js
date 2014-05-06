@@ -68,7 +68,7 @@ app.engine('phtml', handlebars({defaultLayout: 'layout', extname: '.phtml'}));
 app.set('view engine', 'phtml');
 
 app.use(express.logger(config.logFormat));
-app.use(express.favicon(__APP_PUBLIC_PATH + '/favicon.ico'));
+app.use(express.favicon(__APP_PUBLIC_PATH + '/assets/ico/favicon.ico'));
 app.use(express.compress());
 
 app.use(express.bodyParser({limit: 4096}));
@@ -95,11 +95,8 @@ app.use(function(req, res, next) {
 app.use(express.static(__APP_PUBLIC_PATH));
 app.use(app.router);
 
-express.errorHandler.title = 'BASE Ltd';
-app.use(express.errorHandler());
-
 app.get('/ping', function(req, res){
-	res.render('ping');
+	res.send(true);
 });
 
 /**
@@ -145,5 +142,8 @@ function NotFound(msg, url){
 	this.toString = function(){
 		return msg;
 	};
-	this.stack = "\nI can't hang with " + url;
+	this.stack = "\nI have no " + url;
 }
+
+express.errorHandler.title = 'BASE Ltd';
+app.use(express.errorHandler());

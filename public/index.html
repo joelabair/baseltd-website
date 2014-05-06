@@ -1,13 +1,455 @@
 <!DOCTYPE html>
-
-<html>
-	<head>
-		<title>Page Title</title>
-	</head>
-
-	<body>
-
-		<div>Page Content</div>
-
-	</body>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BASE, Ltd website">
+    <meta name="author" content="Hasan Alibegic">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <title>BASE, Ltd</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,600">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="loader">
+      <div class="fading-line"></div>
+    </div>
+    <section id="home" class="page">
+      <div class="container">
+        <div class="content cover text-center">
+          <div class="row">
+            <div class="col-lg-12" id="greeting">
+              <h1 class="animated hiding" data-animation="fadeInDown" data-delay="300">We Are BASE, Ltd.</h1>
+              <a class="btn btn-blue nav-external animated hiding" data-animation="fadeIn" data-delay="900" href="#services">Explore</a>
+              <h3 class="animated hiding" data-animation="fadeIn" data-delay="600">We're Doing Things Differently.</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="navbar-top">
+      <nav class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand nav-external" href="#home">BASE, Ltd</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active">
+                <a href="#home">Home</a>
+              </li>
+              <li>
+                <a href="#services">Services</a>
+              </li>
+              <li>
+                <a href="#work">Work</a>
+              </li>
+              <li>
+                <a href="#clients">Clients</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li>
+                <a href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <section id="services" class="page">
+      <div class="container">
+        <div class="content text-center">
+          <div class="heading">
+            <h2>What we love doing.</h2>
+            <div class="border"></div>
+            <p>At BASE Ltd our goal is to provide quality results and exceptional service at a competitive price.</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="300">
+              <i class="fa fa-globe fa-5x"></i>
+              <h3><a href="#">Sound, Stage and Lighting Production</a></h3>
+              <p>Our services range from concert sound systems with complete staging and lighting - to smaller, more intimate sound, stage and/or lighting - to individual equipment rental.</p>
+            </div>
+            <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="600">
+              <i class="fa fa-edit fa-5x"></i>
+              <h3><a href="#">Planning and Creative Direction</a></h3>
+              <p>We believe communication is an essential component to the successful planning and outcome of any event. The active communication we have with our clients enables us to openly work with them before, during and after an event with close attention to detail.</p>
+            </div>
+            <div class="col-lg-4 service animated hiding" data-animation="fadeInUp" data-delay="900">
+              <i class="fa fa-crosshairs fa-5x"></i>
+              <h3><a href="#">Professional Engineering Services</a></h3>
+              <p>Our engineers and technicians are equipped with in-depth knowledge and years of experience. The can-do, perfectionist attitude we possess ensures that all intended experience your event to its fullest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="work" class="page">
+      <div class="container">
+        <div class="content text-center">
+          <div class="heading">
+            <h2>This is how we do it.</h2>
+            <div class="border"></div>
+            <p>We've had the privledge of working with some amazing artists. Here are a few samples of work we've done.</p>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div id="portfolio">
+                <ul class="filters list-inline">
+                  <li>
+                    <a class="active" data-filter="*" href="#">All</a>
+                  </li>
+                  <li>
+                    <a data-filter=".photography" href="#">Photography</a>
+                  </li>
+                  <li>
+                    <a data-filter=".branding" href="#">Branding</a>
+                  </li>
+                  <li>
+                    <a data-filter=".web" href="#">Web</a>
+                  </li>
+                </ul>
+                <ul class="items list-unstyled clearfix animated hiding" data-animation="fadeInRight">
+                  <li class="item branding">
+                    <a href="#">
+                      <img src="assets/img/work/1.jpg" alt="">
+                      <div class="overlay">
+                        <span>Rigging</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item photography">
+                    <a href="#">
+                      <img src="assets/img/work/2.jpg" alt="">
+                      <div class="overlay">
+                        <span>College Concerts</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item branding">
+                    <a href="#">
+                      <img src="assets/img/work/3.jpg" alt="">
+                      <div class="overlay">
+                        <span>Blues Festivals</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item photography">
+                    <a href="#">
+                      <img src="assets/img/work/4.jpg" alt="">
+                      <div class="overlay">
+                        <span>Rock and Roll</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item photography">
+                    <a href="#">
+                      <img src="assets/img/work/5.jpg" alt="">
+                      <div class="overlay">
+                        <span>Stand up Comedy</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item web">
+                    <a href="#">
+                      <img src="assets/img/work/6.jpg" alt="">
+                      <div class="overlay">
+                        <span>Intimate Concerts</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item photography">
+                    <a href="#">
+                      <img src="assets/img/work/7.jpg" alt="">
+                      <div class="overlay">
+                        <span>Mobile Stages</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="item web">
+                    <a href="#">
+                      <img src="assets/img/work/8.jpg" alt="">
+                      <div class="overlay">
+                        <span>The best part!</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="clients" class="page">
+      <div class="container">
+        <div class="content text-center">
+          <div class="row">
+            <div class="col-lg-12 animated hiding" data-animation="fadeInDown">
+              <div id="testimonials" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li data-target="#testimonials" data-slide-to="0" class="active"></li>
+                  <li data-target="#testimonials" data-slide-to="1" class=""></li>
+                  <li data-target="#testimonials" data-slide-to="2" class=""></li>
+                  <li data-target="#testimonials" data-slide-to="3" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <p class="quote">We have worked with Bair Audio Systems Engineering on several campus events, and each time they have provided us with incredible service! The BASE Ltd. team always takes that extra step to make sure an event is done well. It is wonderful to know that I can focus my energy on other details of event planning, and trust that the sound set-up will be professional, thorough and always at or above expectation.</p>
+                    <p class="client">Joseph F. Maurer - Director of Student Activities, Kenyon College</p>
+                  </div>
+                  <div class="item">
+                    <p class="quote">Great Sound! Thanks.</p>
+                    <p class="client">Gary Grainger - Bassist, the Ken Navarro Group</p>
+                  </div>
+                  <div class="item">
+                    <p class="quote">Your work with the Clintonville Arts and Music Festival has been superb. I appreciate your creativity and knowledge when it comes to creating an engaging environment for the event. Your use of satellite arrays in the artist's market, enhanced the festival atmosphere immensely. I contunie to recieve many positive comments about the production. Thank you so much for the great work...</p>
+                    <p class="client">Barbara Kocab - Festival Coordinator, Whetstone Community Council</p>
+                  </div>
+                  <div class="item">
+                    <p class="quote">Thanks, The guys said your crew did a great job.</p>
+                    <p class="client">James "Taco" Martin - VI3 management, E Company Productions</p>
+                  </div>
+                </div>
+                <a class="left carousel-control" data-slide="prev" href="#testimonials">&lsaquo;</a>
+                <a class="right carousel-control" data-slide="next" href="#testimonials">&rsaquo;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="page">
+      <div class="container">
+        <div class="content text-center">
+          <div class="heading">
+            <h2>About Us.</h2>
+            <div class="border"></div>
+            <p>A full 10 years ago, we had a single goal in mind. To provide high quality sound reinforcement systems and exceptional service for concerts and events.</p>
+			<p>Today that goal remains clear, although expanded to include complete event logistics, sound, staging, backline, and creative lighting solutions carrying the same exceptional service we have always provided.</p>
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInLeft" data-delay="600">
+              <div class="photo-rounded">
+                <img class="img-responsive" src="assets/img/team/1.jpg" alt="">
+              </div>
+              <div class="bio">
+                <h4>John Doe</h4>
+                <h5>Web Developer</h5>
+                <div class="border"></div>
+                <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
+                <ul class="list-inline">
+                  <li>
+                    <a href="http://www.facebook.com" title="Facebook">
+                      <i class="fa fa-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.twitter.com" title="Twitter">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.linkedin.com" title="LinkedIn">
+                      <i class="fa fa-linkedin"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.github.com" title="GitHub">
+                      <i class="fa fa-github"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
+              <div class="photo-rounded">
+                <img class="img-responsive" src="assets/img/team/2.jpg" alt="">
+              </div>
+              <div class="bio">
+                <h4>Clarinda Gratia</h4>
+                <h5>Designer</h5>
+                <div class="border"></div>
+                <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
+                <ul class="list-inline">
+                  <li>
+                    <a href="http://www.dribbble.com" title="Dribbble">
+                      <i class="fa fa-dribbble"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.pinterest.com" title="Pinterest">
+                      <i class="fa fa-pinterest"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.instagram.com" title="Instagram">
+                      <i class="fa fa-instagram"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInUp" data-delay="300">
+              <div class="photo-rounded">
+                <img class="img-responsive" src="assets/img/team/3.jpg" alt="">
+              </div>
+              <div class="bio">
+                <h4>Mandeep Eimear</h4>
+                <h5>Mobile Developer</h5>
+                <div class="border"></div>
+                <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
+                <ul class="list-inline">
+                  <li>
+                    <a href="http://www.twitter.com" title="Twitter">
+                      <i class="fa fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://developer.android.com/index.html" title="Android Developers">
+                      <i class="fa fa-android"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.stackoverflow.com" title="Stack Overflow">
+                      <i class="fa fa-stack-overflow"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12 teammate animated hiding" data-animation="fadeInRight" data-delay="600">
+              <div class="photo-rounded">
+                <img class="img-responsive" src="assets/img/team/4.jpg" alt="">
+              </div>
+              <div class="bio">
+                <h4>Wigstan Fergus</h4>
+                <h5>QA Engineer</h5>
+                <div class="border"></div>
+                <p>Lorem ipsum dolor sit, consetetur sadipscing elitr, diam nonumy eirmod tempor invidunt ut labore.</p>
+                <ul class="list-inline">
+                  <li>
+                    <a href="http://www.plus.google.com" title="Google+">
+                      <i class="fa fa-google-plus"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://www.trello.com" title="Trello">
+                      <i class="fa fa-trello"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:john.doe@mail.com" title="Email">
+                      <i class="fa fa-envelope"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="twitter text-center">
+        <div class="animated hiding" data-animation="fadeIn">
+          <i class="fa fa-twitter fa-3x"></i>
+          <div id="feed"></div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="page">
+      <div class="container">
+        <div class="content cover text-center">
+          <div class="heading">
+            <h2>Getting in touch.</h2>
+            <div class="border"></div>
+            <p>Give us a call for a no strings attached quote.  We'll be happy to put everyting in writing.</p>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 animated hiding" data-animation="fadeInRight" data-delay="600">
+              <i class="fa fa-map-marker fa-3x"></i>
+              <a href="#">234 County Road 21, Ashley, Ohio 43003</a>
+            </div>
+            <div class="col-lg-4 animated hiding" data-animation="fadeInDown" data-delay="300">
+              <i class="fa fa-phone fa-3x"></i>
+              <a href="tel:9876543210">(800) 974-0931</a>
+            </div>
+            <div class="col-lg-4 animated hiding" data-animation="fadeInLeft" data-delay="600">
+              <i class="fa fa-envelope fa-3x"></i>
+              <a href="mailto:info@baseltd.biz">info@baseltd.biz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 animated hiding" data-animation="fadeInUp">
+            <ul class="social list-inline ">
+              <li>
+                <a class="facebook" href="https://www.facebook.com/pages/BASE-Ltd/111633799461" title="Facebook">
+                  <i class="fa fa-facebook fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a class="twitter" href="https://twitter.com/BASELtd1" title="Twitter">
+                  <i class="fa fa-twitter fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a class="google-plus" href="https://plus.google.com/u/0/+BaseltdBiz" title="Google+">
+                  <i class="fa fa-google-plus fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a class="dribbble" href="http://www.linkedin.com/companies/386870/BASE,+Ltd" title="Dribbble">
+                  <i class="fa fa-dribbble fa-2x"></i>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright">
+              Created by <a href="http://www.twitter.com/halibegic">Hasan Alibegic</a> &middot;
+              Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a> &middot;
+              Based on <a href="http://getbootstrap.com/">Bootstrap</a>  &middot;
+              Icons by <a href="http://fontawesome.io/">Font Awesome</a> &middot;
+              <a href="http://www.github.com/halibegic/BASE, Ltd">GitHub Project</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/imagesloaded.min.js"></script>
+    <script src="assets/js/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/jquery.nav.min.js"></script>
+    <script src="assets/js/jquery.appear.min.js"></script>
+    <script src="assets/js/twitterFetcher.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-25089888-9');ga('send','pageview');
+    </script>
+  </body>
 </html>

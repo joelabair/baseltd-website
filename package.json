@@ -1,7 +1,7 @@
 {
   "name": "BASELTD-App",
   "version": "0.0.1",
-  "description": "OpenShift Application Template",
+  "description": "OpenShift Gears Website",
   "author": {
 		"name": "Joel Bair",
 		"email": "joel.a.bair@gmail.com"
