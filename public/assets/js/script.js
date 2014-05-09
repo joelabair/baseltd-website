@@ -29,8 +29,13 @@ function initNavbar() {
 }
 function initPortfolio () {
     var portfolio = $('#portfolio');
-    var items = $('.items', portfolio); 
-    var filters = $('.filters li a', portfolio); 
+    var items = $('.items', portfolio);
+    var filters = $('.filters li a', portfolio);
+
+	$('a', portfolio).click(function( e ) {
+		e.preventDefault();
+		return false;
+	});
 
     items.imagesLoaded(function() {
         items.isotope({
@@ -39,7 +44,7 @@ function initPortfolio () {
             transitionDuration: '0.7s'
         });
     });
-    
+
     filters.click(function(){
         var el = $(this);
         filters.removeClass('active');
@@ -47,7 +52,7 @@ function initPortfolio () {
         var selector = el.attr('data-filter');
         items.isotope({ filter: selector });
         return false;
-    });   
+    });
 }
 function initAnimations() {
     $('.animated').appear(function () {
@@ -72,36 +77,36 @@ function initAnimations() {
     // Service hover animation
 	$('.service').hover(function(){
 		$('i', this).addClass('animated tada');
-	},function(){	
+	},function(){
         $('i', this).removeClass('animated tada');
 	});
 }
 
-function initTwitterFeed() {
-    /* More about fetch params on http://www.jasonmayes.com/projects/twitterApi */
-    twitterFetcher.fetch('347101057018638336', '', 1, true, false, false, '', true, handleTweets, false);
-}
+//function initTwitterFeed() {
+//    /* More about fetch params on http://www.jasonmayes.com/projects/twitterApi */
+//    twitterFetcher.fetch('347101057018638336', '', 1, true, false, false, '', true, handleTweets, false);
+//}
 $(document).ready(function () {
     initNavbar();
     initPortfolio();
     initAnimations();
-    initTwitterFeed();
+    //initTwitterFeed();
 });
 $(window).load(function () {
     $(".loader .fading-line").fadeOut();
     $(".loader").fadeOut("slow");
 });
-function handleTweets(tweets) {
-    var element = document.getElementById('feed');
-    if (element) {
-        var x = tweets.length;
-        var n = 0;
-        var html = '<ul class="list-inline">';
-        while (n < x) {
-            html += '<li>' + tweets[n] + '</li>';
-            n++;
-        }
-        html += '</ul>';
-        element.innerHTML = html;
-    }
-}
+//function handleTweets(tweets) {
+//    var element = document.getElementById('feed');
+//    if (element) {
+//        var x = tweets.length;
+//        var n = 0;
+//        var html = '<ul class="list-inline">';
+//        while (n < x) {
+//            html += '<li>' + tweets[n] + '</li>';
+//            n++;
+//        }
+//        html += '</ul>';
+//        element.innerHTML = html;
+//    }
+//}

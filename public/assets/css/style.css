@@ -316,6 +316,7 @@ a:focus {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  font-size: 115%;
 }
 #contact,
 #contact a,
@@ -330,18 +331,24 @@ a:focus {
   text-align: center;
   background-color: #2a3940;
 }
+#contact form input, #contact form textarea {
+	background: rgba(0,0,0,.75);
+	color: #C0C0C0;
+	border-radius: 3px;
+}
 #footer a,
 #footer a:hover,
-#footer a:focus { color: #fff }
+#footer a:focus { color: #fff; display: inline-block; padding: 1px; }
+#footer a>i { padding-left: 1px; }
 #footer .social { margin-bottom: 20px }
 #footer .social li .facebook:hover,
-#footer .social li .facebook:focus { color: #3b5998 }
+#footer .social li .facebook:focus { color: #3b5998; border-color: #3b5998; }
 #footer .social li .twitter:hover,
-#footer .social li .twitter:focus { color: #00aced }
+#footer .social li .twitter:focus { color: #00aced; border-color: #00aced; }
 #footer .social li .google-plus:hover,
-#footer .social li .google-plus:focus { color: #d34836 }
-#footer .social li .dribbble:hover,
-#footer .social li .dribbble:focus { color: #ea4c89 }
+#footer .social li .google-plus:focus { color: #d34836; border-color: #d34836; }
+#footer .social li .linkedin:hover,
+#footer .social li .linkedin:focus { color: #1B86BC; border-color: #1B86BC; }
 #footer .copyright { margin-bottom: 0 }
 /* Responsive style */
 @media screen and (max-width: 1024px) {
