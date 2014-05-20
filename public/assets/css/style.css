@@ -126,7 +126,7 @@ a:focus {
           box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.3);
 }
 .page { overflow: hidden }
-.page .content { padding: 60px 0 }
+.page .content { padding: 30px 0 60px 0 }
 .page .content.cover { padding: 240px 0 }
 .page .heading h2 {
   margin-top: 0;
@@ -218,8 +218,15 @@ a:focus {
           transform: scale(1.1);
 }
 #clients {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+#clients .steel {
   color: #fff;
   background-color: #2a3940;
+}
+#testimonials {
+	min-height:  275px;
 }
 #testimonials .item { margin-bottom: 30px }
 #testimonials .quote {
@@ -324,7 +331,9 @@ a:focus {
 #contact a:focus { color: #fff }
 #contact .heading .border { background-color: #fff }
 #contact a { display: block }
-#contact i { margin: 60px 0 15px }
+#contact i { margin: 40px 0 15px }
+#contact .content { padding: 40px 0 0 }
+#contact .content:last-child { padding: 40px 0 }
 #footer {
   padding: 40px 0;
   color: #ccc;
@@ -350,6 +359,7 @@ a:focus {
 #footer .social li .linkedin:hover,
 #footer .social li .linkedin:focus { color: #1B86BC; border-color: #1B86BC; }
 #footer .copyright { margin-bottom: 0 }
+
 /* Responsive style */
 @media screen and (max-width: 1024px) {
   #testimonials .carousel-control { display: block }
@@ -357,16 +367,25 @@ a:focus {
 @media screen and (max-width: 991px) {
   #portfolio .items li { width: 50% }
   #testimonials .quote { padding: 0 70px }
+  #contact i { margin: 40px 0 15px }
+  #contact .content { padding:40px 0 0 }
+  #contact .content:last-child { padding: 40px 0 }
 }
 @media (max-width: 767px) {
   .page .content.cover { padding: 160px 0 }
   #testimonials .quote { padding: 0 50px }
   #testimonials .carousel-control.right { right: 10px }
+  #contact i { margin: 35px 0 10px }
+  #contact .content { padding: 30px 0 0 }
+  #contact .content:last-child { padding: 30px 0 }
 }
 @media (max-width: 480px) {
   .page .content.cover { padding: 80px 0 }
   #portfolio .items li { width: 100% }
   #testimonials .quote { padding: 0 30px }
+  #contact i { margin: 25px 0 0 }
+  #contact .content { padding: 15px 0 0 }
+  #contact .content:last-child { padding: 15px 0 }
 }
 
 #greeting {

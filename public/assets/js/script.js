@@ -1,6 +1,6 @@
 function initNavbar() {
 
-    var scrollSpeed = 750;
+    var scrollSpeed = 650;
     var scrollOffset = 50;
     var easing = 'swing';
 
@@ -11,7 +11,10 @@ function initNavbar() {
         scrollOffset: scrollOffset,
         scrollThreshold: 0.5,
         filter: ':not(.external)',
-        easing: easing
+        easing: easing,
+		begin: function() {
+			$('.navbar-collapse').collapse('hide');
+		}
     });
 
     $('.nav-external').click(function (e) {
@@ -26,6 +29,10 @@ function initNavbar() {
             top: $('#home').height()
         }
     });
+
+	//$('.navbar-collapse').click('li', function() {
+	//	$('.navbar-collapse').collapse('hide');
+	//});
 }
 function initPortfolio () {
     var portfolio = $('#portfolio');
@@ -72,6 +79,10 @@ function initAnimations() {
         }
     }, {
         accY: -60
+    });
+
+	$('.carousel').carousel({
+		interval: 10000
     });
 
     // Service hover animation
