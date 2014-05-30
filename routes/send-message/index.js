@@ -8,9 +8,9 @@ module.exports = function(app, path) {
 
 	var processRequest = function(req, res) {
 
-		var text = "Name: " + req.param('name') + "\n";
-		text += "Phone: "+ req.param('phone') + "\n";
-		text += "Company: "+ req.param('organization') + "\n\n";
+		var text = "Name: " + req.param('name') + "\n\n";
+		text += "Phone: "+ req.param('phone') + "\n\n";
+		text += "Company: "+ req.param('organization') + "\n\n\n";
 		text += req.param('message');
 
 		var message = {
