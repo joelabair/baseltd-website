@@ -4,22 +4,27 @@ var mandrill = require('mandrill-api/mandrill');
 module.exports = function(app, path) {
 
 	var msgConfig = app.get('messaging');
-
 	var mandrill_client = new mandrill.Mandrill(msgConfig.api_key);
 
 	var processRequest = function(req, res) {
+
+		var text = "Name: " + req.param('name') + "\n";
+		text += "Phone: "+ req.param('phone') + "\n";
+		text += "Company: "+ req.param('organization') + "\n\n";
+		text += req.param('message');
+
 		var message = {
-			"text": req.param('message'),
+			"text": text,
 			"subject": msgConfig.subject,
 			"from_email": msgConfig.from_addr,
-			"from_name": req.param('fullname') + msgConfig.from_sfx,
+			"from_name": req.param('name') + msgConfig.from_sfx,
 			"to": [{
 					"email": msgConfig.to_addr,
 					"name": msgConfig.to_name,
 					"type": "to"
 				}],
 			"headers": {
-				"Reply-To": req.param('emailaddress')
+				"Reply-To": req.param('email')
 			},
 			"important": false,
 			"track_opens": true,
@@ -34,16 +39,15 @@ module.exports = function(app, path) {
 		};
 
 		var success = function(result) {
-			console.log(result);
+			res.send({success: true, result: result});
 		};
 
 		var error = function(e) {
 			console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+			res.send({success: false, error: e});
 		};
 
 		mandrill_client.messages.send({"message": message, "async": true}, success, error);
-
-		res.send({success: true});
 	};
 
 
@@ -52,7 +56,7 @@ module.exports = function(app, path) {
 	app.post('/'+path, processRequest);
 
     app.all('/'+path, function(req,res,next) {
-        res.send(400,'Unsupported action!');
+        res.send(405,'Unsupported action!');
     });
 
 };

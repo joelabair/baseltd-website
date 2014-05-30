@@ -73,15 +73,11 @@ app.use(express.compress());
 
 app.use(express.bodyParser({limit: 4096}));
 app.use(express.cookieParser(expressSecret));
-app.use(express.cookieSession({
+app.use(express.session({
 	key: '_BSID',
-	secret: expressSecret,
-	cookie: {
-		httpOnly: true,
-		maxAge: (((60 * 60) * 24) * 7) * 1000
-		// maxAge 7 days
-	}
+	secret: expressSecret
 }));
+
 
 app.use(express.csrf());
 app.use(function(req, res, next) {
@@ -94,6 +90,10 @@ app.use(function(req, res, next) {
 
 app.use(express.static(__APP_PUBLIC_PATH));
 app.use(app.router);
+
+app.get('/', function(req, res){
+	res.render('index');
+});
 
 app.get('/ping', function(req, res){
 	res.send(true);

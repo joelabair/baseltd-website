@@ -30,10 +30,8 @@ function initNavbar() {
         }
     });
 
-	//$('.navbar-collapse').click('li', function() {
-	//	$('.navbar-collapse').collapse('hide');
-	//});
-}
+};
+
 function initPortfolio () {
     var portfolio = $('#portfolio');
     var items = $('.items', portfolio);
@@ -60,7 +58,8 @@ function initPortfolio () {
         items.isotope({ filter: selector });
         return false;
     });
-}
+};
+
 function initAnimations() {
     $('.animated').appear(function () {
         var el = $(this);
@@ -91,33 +90,41 @@ function initAnimations() {
 	},function(){
         $('i', this).removeClass('animated tada');
 	});
-}
+};
 
-//function initTwitterFeed() {
-//    /* More about fetch params on http://www.jasonmayes.com/projects/twitterApi */
-//    twitterFetcher.fetch('347101057018638336', '', 1, true, false, false, '', true, handleTweets, false);
-//}
+function resetForm(form) {
+	setTimeout(function(){
+		$('button.btn', form).text('Message Sent...');
+		$(':input', form).attr('readonly', true);
+		$(':input', form).attr('disabled', true);
+	},1000)
+};
+
 $(document).ready(function () {
     initNavbar();
     initPortfolio();
     initAnimations();
-    //initTwitterFeed();
+
+	$('#contact form').validate({
+		errorPlacement: function(error, element) {},
+		submitHandler: function(form) {
+			$('button.btn', form).button('loading');
+			$(form).ajaxSubmit({
+				type: "POST",
+				url: "/send-message",
+				success: function() {
+					resetForm(form)
+				},
+				error: function(){
+					resetForm(form)
+				}
+			});
+			return false;
+		}
+	});
 });
+
 $(window).load(function () {
     $(".loader .fading-line").fadeOut();
     $(".loader").fadeOut("slow");
 });
-//function handleTweets(tweets) {
-//    var element = document.getElementById('feed');
-//    if (element) {
-//        var x = tweets.length;
-//        var n = 0;
-//        var html = '<ul class="list-inline">';
-//        while (n < x) {
-//            html += '<li>' + tweets[n] + '</li>';
-//            n++;
-//        }
-//        html += '</ul>';
-//        element.innerHTML = html;
-//    }
-//}
