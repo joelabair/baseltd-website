@@ -8,10 +8,10 @@
   },
   "dependencies": {
 		"express": "3.5.x",
-		"mongodb" : "> 1.1.10",
+		"mongodb" : "*",
 		"mandrill-api": "*",
 		"express3-handlebars": "*",
-		"express-validator": "~2.1.1"
+		"express-validator": "*"
   },
   "private": true,
   "main": "server.js"
