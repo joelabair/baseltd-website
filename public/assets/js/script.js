@@ -6,14 +6,18 @@ function initNavbar() {
 
     $('#navbar-top .navbar-default ul.nav').onePageNav({
         currentClass: 'active',
-        changeHash: false,
+        changeHash: true,
         scrollSpeed: scrollSpeed,
         scrollOffset: scrollOffset,
-        scrollThreshold: 0.5,
+        scrollThreshold: 0.25,
         filter: ':not(.external)',
         easing: easing,
 		begin: function() {
 			$('.navbar-collapse').collapse('hide');
+		},
+		scrollChange: function($li) {
+			var label = $('a', $li).text();
+			_gaq.push(['_trackEvent', label, 'viewed']);
 		}
     });
 
@@ -121,6 +125,12 @@ $(document).ready(function () {
 			});
 			return false;
 		}
+	});
+
+
+	$(window).on('hashchange', function() {
+		var label = $('#navbar-top .navbar-default ul.nav a[href="'+location.hash+'"]').text();
+		_gaq.push(['_trackEvent', label, 'viewed']);
 	});
 });
 
