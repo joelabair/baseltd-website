@@ -53,7 +53,7 @@ module.exports = function(app, path) {
 		text += "Name: " + name + "<br>";
 		text += "Phone: "+ phone + "<br>";
 		if (org) text += "Company: "+ org + "<br>";
-		text += "<br>" + Array(30).join('-') + 'MESSAGE TEXT'+Array(30).join('-') + "<br><br>";
+		text += "<br>" + Array(22).join('-') + 'MESSAGE TEXT'+Array(22).join('-') + "<br><br>";
 		text += message;
 		text += "<\p></body></html>";
 
