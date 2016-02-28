@@ -99,8 +99,16 @@ function initAnimations() {
 function resetForm(form) {
 	setTimeout(function(){
 		$('button.btn', form).text('Message Sent...');
-		$(':input', form).attr('readonly', true);
 		$(':input', form).attr('disabled', true);
+		var fheight = $('form.contact').height();
+		var rheight = $('form.contact .form-group:last-child').height();
+		$('form.contact').css('min-height', fheight);
+		$('form.contact .success').css('min-height', fheight - rheight);
+		$('form.contact').parent().parent().siblings('.heading').hide();
+		$('form.contact .form-group').fadeOut(function() {
+			$('form.contact .success').fadeIn();
+			$('form.contact .form-group:last-child').fadeIn();
+		});
 	},1000)
 };
 
@@ -109,18 +117,22 @@ $(document).ready(function () {
     initPortfolio();
     initAnimations();
 
-	$('#contact form').validate({
-		errorPlacement: function(error, element) {},
+	var validator = $('form.contact').validate({
+		errorPlacement: function(error, element) {
+			
+		},
 		submitHandler: function(form) {
+			$(':input', form).attr('readonly', true);
 			$('button.btn', form).button('loading');
 			$(form).ajaxSubmit({
 				type: "POST",
 				url: "/send-message",
-				success: function() {
-					resetForm(form)
+				success: function(response) {
+					resetForm(form);
 				},
-				error: function(){
-					resetForm(form)
+				error: function(xhr) {
+					var errors = xhr.responseJSON;
+					validator.showErrors(errors);
 				}
 			});
 			return false;

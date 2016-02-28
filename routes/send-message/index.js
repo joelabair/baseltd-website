@@ -1,4 +1,14 @@
+"use strict";
+
 var mandrill = require('mandrill-api/mandrill');
+var validator = require('validator');
+
+var sanitize = function(input) {
+	input = validator.toString(input);
+	input = validator.stripLow(input);
+	input = validator.trim(input);
+	return input;
+};
 
 
 module.exports = function(app, path) {
@@ -7,24 +17,58 @@ module.exports = function(app, path) {
 	var mandrill_client = new mandrill.Mandrill(msgConfig.api_key);
 
 	var processRequest = function(req, res) {
-
-		var text = "Name: " + req.param('name') + "\n\n";
-		text += "Phone: "+ req.param('phone') + "\n\n";
-		text += "Company: "+ req.param('organization') + "\n\n\n";
-		text += req.param('message');
+		var text = '';
+		var error = null;
+		var name = sanitize(req.param('name'));
+		var phone = sanitize(req.param('phone'));
+		var email = sanitize(req.param('email'));
+		var org = sanitize(req.param('organization'));
+		var message = sanitize( req.param('message'));
+		
+		if (!name) {
+			error = error || {};
+			error.name = 'required';
+		}
+		
+		if (!phone) {
+			error = error || {};
+			error.phone = 'required';
+		}
+		
+		if (!email || !validator.isEmail(email)) {
+			error = error || {};
+			error.email = 'invalid';
+		}
+		
+		if (!message) {
+			error = error || {};
+			error.message = 'required';
+		}
+		
+		if (error) {
+			return res.status(400).send(error);
+		}
+		
+		text = "<html><body><p>";
+		text += "Name: " + name + "<br>";
+		text += "Phone: "+ phone + "<br>";
+		if (org) text += "Company: "+ org + "<br>";
+		text += "<br>" + Array(30).join('-') + 'MESSAGE TEXT'+Array(30).join('-') + "<br><br>";
+		text += message;
+		text += "<\p></body></html>";
 
 		var message = {
-			"text": text,
+			"html": text,
 			"subject": msgConfig.subject,
 			"from_email": msgConfig.from_addr,
-			"from_name": req.param('name') + msgConfig.from_sfx,
+			"from_name": name + msgConfig.from_sfx,
 			"to": [{
-					"email": msgConfig.to_addr,
-					"name": msgConfig.to_name,
-					"type": "to"
-				}],
+				"email": msgConfig.to_addr,
+				"name": msgConfig.to_name,
+				"type": "to"
+			}],
 			"headers": {
-				"Reply-To": req.param('email')
+				"Reply-To": email
 			},
 			"important": false,
 			"track_opens": true,

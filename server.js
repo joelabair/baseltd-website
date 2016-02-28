@@ -145,5 +145,13 @@ function NotFound(msg, url){
 	this.stack = "\nI have no " + url;
 }
 
+// error handler development
+app.use(function (err, req, res, next) {
+  if (!process.env.NODE_ENV || process.env.NODE_ENV.indexOf('development') === -1) {
+	err.stack='Error!';
+  }
+  next(err);
+});
+
 express.errorHandler.title = 'BASE Ltd';
 app.use(express.errorHandler());
