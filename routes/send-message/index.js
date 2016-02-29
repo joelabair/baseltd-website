@@ -91,12 +91,14 @@ module.exports = function(app, path) {
 		
 		reqOpts.transmissionBody.content['reply_to'] = name + " <"+email+">";
 		  
-		client.transmissions.send(reqOpts, function(err, result) {
+		client.transmissions.send(reqOpts, function(err, _res) {
 			if (err) {
 				console.log('A message transmission error occurred: ' + err.name + ' - ' + err.message);
 				res.status(500).send({success: false, error: err});
 			} else {
-				res.send({success: true, result: result});
+				console.log('Message:', data);
+				console.log('Result:', _res.body.results);
+				res.send({success: true, result: _res.body.results});
 			}
 		});
 	};
