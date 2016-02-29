@@ -1,7 +1,26 @@
 "use strict";
 
-var mandrill = require('mandrill-api/mandrill');
+var SparkPost = require('sparkpost');
 var validator = require('validator');
+
+var client = new SparkPost();  /* key is stored in SPARKPOST_API_KEY environment variable - see private-config.js*/
+var template;
+
+client.templates.find({id: 'base-ltd-contact-form'}, function(err, res) {
+	var json;
+	if (err) {
+		console.log(err);
+	} else {
+		json = JSON.parse(res.body);
+		if ('results' in json) {
+			template = json.results;
+			console.log("Email Template Retrieved");
+		}
+		else {
+			console.log("Email Template Response Parse Error!");
+		}
+	}
+});
 
 var sanitize = function(input) {
 	input = validator.toString(input);
@@ -10,12 +29,10 @@ var sanitize = function(input) {
 	return input;
 };
 
-
 module.exports = function(app, path) {
-
+	
 	var msgConfig = app.get('messaging');
-	var mandrill_client = new mandrill.Mandrill(msgConfig.api_key);
-
+	
 	var processRequest = function(req, res) {
 		var text = '';
 		var error = null;
@@ -49,49 +66,39 @@ module.exports = function(app, path) {
 			return res.status(400).send(error);
 		}
 		
-		text = "<html><body><p>";
-		text += "Name: " + name + "<br>";
-		text += "Phone: "+ phone + "<br>";
-		if (org) text += "Company: "+ org + "<br>";
-		text += "<br>" + Array(22).join('-') + 'MESSAGE TEXT'+Array(22).join('-') + "<br><br>";
-		text += message;
-		text += "<\p></body></html>";
-
-		var message = {
-			"html": text,
-			"subject": msgConfig.subject,
-			"from_email": msgConfig.from_addr,
-			"from_name": name + msgConfig.from_sfx,
-			"to": [{
-				"email": msgConfig.to_addr,
-				"name": msgConfig.to_name,
-				"type": "to"
-			}],
-			"headers": {
-				"Reply-To": email
-			},
-			"important": false,
-			"track_opens": true,
-			"track_clicks": false,
-			"auto_text": true,
-			"auto_html": true,
-			"inline_css": true,
-			"metadata": {
-				"website": req.host
-			},
-			"subaccount": msgConfig.acnt_id
+		var data = {
+			"name": name,
+			"email": email,
+			"phone": phone,
+			"company": org,
+			"message": message,
+			"timestamp": Date().toString()
 		};
 
-		var success = function(result) {
-			res.send({success: true, result: result});
+		var reqOpts = {
+			transmissionBody: {
+				options: template.options,
+				recipients: [{
+					address: {
+						"email": msgConfig.to_addr,
+						"name": msgConfig.to_name
+					}
+				}],
+				content: template.content,
+				substitution_data: data
+			}
 		};
-
-		var error = function(e) {
-			console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-			res.send({success: false, error: e});
-		};
-
-		mandrill_client.messages.send({"message": message, "async": true}, success, error);
+		
+		reqOpts.transmissionBody.content['reply_to'] = name + " <"+email+">";
+		  
+		client.transmissions.send(reqOpts, function(err, result) {
+			if (err) {
+				console.log('A message transmission error occurred: ' + err.name + ' - ' + err.message);
+				res.status(500).send({success: false, error: err});
+			} else {
+				res.send({success: true, result: result});
+			}
+		});
 	};
 
 

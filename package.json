@@ -12,7 +12,8 @@
     "mandrill-api": "1.0.x",
     "express3-handlebars": "0.5.0",
     "express-validator": "2.1.2",
-    "validator": "~5.0.0"
+    "validator": "~5.0.0",
+    "sparkpost": "~1.1.0"
   },
   "private": true,
   "main": "server.js"
