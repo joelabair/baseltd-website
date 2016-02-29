@@ -98,14 +98,18 @@ module.exports = function(app, path) {
 			} else {
 				console.log('Message:', data);
 				console.log('Result:', _res.body.results);
-				res.send({success: true, result: _res.body.results});
+				if (req.xhr) {
+					res.send({success: true, result: _res.body.results});
+				}
+				else {
+					res.render('index');
+				}
 			}
 		});
 	};
 
 
     // setup route handlers
-    app.get('/'+path, processRequest);
 	app.post('/'+path, processRequest);
 
     app.all('/'+path, function(req,res,next) {
