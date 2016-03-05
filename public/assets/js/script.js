@@ -1,3 +1,5 @@
+$('#email-section').html($('script#email-template').html());
+		
 function initNavbar() {
 
     var scrollSpeed = 650;

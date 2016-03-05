@@ -34,6 +34,10 @@ module.exports = function(app, path) {
 	var msgConfig = app.get('messaging');
 	
 	var processRequest = function(req, res) {
+		if (!req.xhr) {
+			res.redirect('/');
+		}
+		
 		var text = '';
 		var error = null;
 		var name = sanitize(req.param('name'));
@@ -100,9 +104,6 @@ module.exports = function(app, path) {
 				console.log('Result:', _res.body.results);
 				if (req.xhr) {
 					res.send({success: true, result: _res.body.results});
-				}
-				else {
-					res.render('index');
 				}
 			}
 		});
