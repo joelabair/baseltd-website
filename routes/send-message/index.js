@@ -35,7 +35,7 @@ module.exports = function(app, path) {
 	
 	var processRequest = function(req, res) {
 		if (!req.xhr) {
-			res.redirect('/');
+			return res.redirect('/');
 		}
 		
 		var text = '';
