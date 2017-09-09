@@ -2,7 +2,7 @@
  *  Application Configuration Settings
  *
  */
-
+console.log(process.env);
 var appConfig = process.env.APP_CONFIG || {
 	"mongo": {
 		"hostString": 	"127.0.0.1:27017/baseltd",
@@ -50,4 +50,3 @@ var config = {
 
 
 module.exports = config[process.env['NODE_ENV']];
-
