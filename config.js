@@ -1,8 +1,9 @@
+"use strict";
+
 /*
  *  Application Configuration Settings
  *
  */
-
 var appConfig = {
 	"mongo": {
 		"hostString": 	"127.0.0.1:27017/baseltd",
