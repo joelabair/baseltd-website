@@ -1,0 +1,3 @@
+--reporter list
+--timeout 20000
+--bail

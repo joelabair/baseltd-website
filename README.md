@@ -1,4 +1,4 @@
 OS-baseltd-site
 ===============
 
-BASE, Ltd. website ~ github pages.
+BASE, Ltd. website ~ code.
