@@ -73,13 +73,15 @@ app.use(helmet());
 app.use(timeout('15s'));
 app.use(compress());
 
-app.use(bodyParser.urlencoded({limit: 4096}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser(expressSecret));
 
 app.use(session({
 	name: '_BSID',
 	secret: expressSecret,
-	store: store
+	store: store,
+	resave: false,
+	saveUninitialized: true
 }));
 
 app.use(express.static(__APP_PUBLIC_PATH));
