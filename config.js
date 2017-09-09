@@ -2,14 +2,18 @@
  *  Application Configuration Settings
  *
  */
-console.log(process.env);
-var appConfig = process.env.APP_CONFIG || {
+
+var appConfig = {
 	"mongo": {
 		"hostString": 	"127.0.0.1:27017/baseltd",
 		"user": 			"openShiftDev75",
 		"db": 				"baseltd"
 	}
 };
+
+if (process.env.APP_CONFIG) {
+	appConfig = JSON.parse(process.env.APP_CONFIG);
+}
 
 appConfig.mongo.password = process.env.EN_MONGO_PASSWD;
 
