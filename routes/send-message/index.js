@@ -4,6 +4,7 @@ var SparkPost = require('sparkpost');
 var validator = require('validator');
 var formatJson = require('stringify-object');
 var util = require('util');
+var nl2br  = require('nl2br');
 var template = null;
 var client = new SparkPost();  /* key is stored in SPARKPOST_API_KEY environment variable */
 
@@ -90,7 +91,8 @@ module.exports = function(app, path) {
 				"email": email,
 				"phone": phone,
 				"company": org,
-				"message": message,
+				"message": nl2br(message),
+				"rawmessage": message,
 				"timestamp": Date().toString()
 			};
 
