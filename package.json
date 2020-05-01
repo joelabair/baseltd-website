@@ -24,7 +24,8 @@
     "serve-favicon": "^2.4.5",
     "sparkpost": "^2.1.2",
     "stringify-object": "^3.2.0",
-    "validator": "^9.4.1"
+    "validator": "^9.4.1",
+    "snyk": "^1.316.1"
   },
   "private": true,
   "main": "server.js",
@@ -33,6 +34,9 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "mocha"
-  }
+    "test": "mocha",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
+  },
+  "snyk": true
 }
