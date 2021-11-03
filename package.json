@@ -24,7 +24,7 @@
     "serve-favicon": "^2.4.5",
     "sparkpost": "^2.1.2",
     "stringify-object": "^3.2.0",
-    "validator": "^9.4.1"
+    "validator": "^13.7.0"
   },
   "private": true,
   "main": "server.js",
